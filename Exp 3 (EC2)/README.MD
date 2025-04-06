@@ -89,3 +89,10 @@
 ```
 http://<elastic-ip-address>:<port-number>
 ```
+
+9. (Optional) Shutdown All Services after using
+   - Disassociate Elastic IP
+   - Release Elastic IP
+   - Terminate Instance
+   - Delete Security Group
+   - Delete Key Pair  
