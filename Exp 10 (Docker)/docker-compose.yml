@@ -1,0 +1,35 @@
+services:
+  app:
+    build: .
+    ports:
+      - 3000:3000
+    environment:
+      - name=value
+    restart: always
+    depends_on:
+      - db
+    networks:
+      - nnw
+  
+  db:
+    image: mysql
+    environment:
+      - name=value
+    networks:
+      - nnw
+    volumes:
+      - nvol:/var/lib/mysql
+  
+  pma:
+    image: phpmyadmin
+    environment:
+      - name=value
+    networks:
+      - nnw
+
+
+networks:
+  nnw:
+
+volumes:
+  nvol:
