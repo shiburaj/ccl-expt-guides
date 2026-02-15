@@ -2,69 +2,48 @@
 
 ***Software*** : AWS Academy
 
-***Objective*** : To deploy an ExpressJS Notes app on AWS RDS. 
+***Objective*** : To deploy a static portfolio app/ any custom static app made by you to `S3`. 
 
-***Requirements*** : Each student must deploy Express Notes app on AWS RDS. 
+***Requirements*** : Each student must deploy your static html/css website on S3 service. 
 
-***Sample App*** : Sample app for reference DONOT use it directly. Every student should **fork** this repo to your account and make changes and commit it to the repo. The changes needs to be done in the `views/index.njk` file. Name should be updated.
+***Sample App*** : Sample app for reference DONOT use it. use your own repo.
 
-[https://github.com/shiburaj/my-notes-express](https://github.com/shiburaj/my-notes-express)
+[https://github.com/shiburaj/my-portfolio-static](https://github.com/shiburaj/my-portfolio-static)
 
-![d](img/rds1.png)
+## Steps to Start AWS Academy Lab
+1. Go to AWS Academy Website [Click Here](https://awsacademy.instructure.com/login/canvas)
+2. Login with your AWS Academy Credentials or use Forgot Password if you cant remember your password.
+3. Go to the Cloud Foundations Course
+4. Click Modules and scroll down to Sandbox
+5. After opening sandbox click the button to open sandbox in a new window.
+6. Click the `Start Lab` button to start the Lab.
+7. After sometime when the lab starts the timer of 3hrs will start.
+8. Click the `AWS` button to go to your AWS Dashboard.
 
 ## ***Steps to Deploy*** :
-1. Go to Services >> Compute >> EC2
-2. Follow `Exp 3` guide to host the code in your repo to the EC2 instance
-3. Go to Services >> Database >> Aurora & RDS
-4. From the sidebar Goto Databases
-5. Click `Create Database` button 
-6. Choose a database creation method: **Standard create**
-
-![d](img/rds2.png)
-
-7. Engine : **Mysql**, Select the required version of Mysql too.
-
-![d](img/rds3.png)
-
-8. Templates: **Free tier**
-
-![d](img/rds4.png)
-
-9. Availability and durability : **Single-AZ**
-
-![d](img/rds5.png)
-
-10. Settings: Give a db identifier, master username and password.
-
-![d](img/rds6.png)
-
-11. Instance configuration: Select Instance class `db.t4g.micro`
-
-![d](img/rds7.png)
-
-12. Storage: Select storage type
-
-![d](img/rds8.png)
-
-13. Connectivity: Connect to EC2. Very important to do this step to allow the EC2 app to communicate with RDS.
-
-![d](img/rds9.png)
-
-14. Select the Security Group created during EC2
-
-![d](img/rds10.png)
-
-15. Tags : Add necessary tags if required
-
-![d](img/rds11.png)
-
-16. Database Authentication : **Password**
-
-![d](img/rds12.png)
-
-17. Click `Create Database` Button to create DB Instance
-
-18. Go to EC2 and open the Static IP in a new browser with your app port and test the app.
+1. Go to Services >> Storage >> S3
+2. Click the `Create Bucket` button
+3. Give a Bucket Name (should be unique)
+4. Remove the check box infront of Block Public Access
+5. Create Bucket
+6. Use the Upload Button to upload your static website files to the S3 bucket.
+7. Go to `Properties` tab and scroll down and enable `Static Website Hosting` by editing it and adding the starting page.
+8. Go to Permissions tab and edit the bucket policy and add the following json code after editing it as per your bucket arn.
 ```
-http://<ec2-static-ip>:<port>
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::YourBucketName/*"
+        }
+    ]
+}
+
 ```
+9.  Go to Properties tab and Scroll Down to Static Website Hosting for the domain name of the website.
+10. Open it to check out your website.
+11. Take screenshot of the `bucket contents` and `the website`.

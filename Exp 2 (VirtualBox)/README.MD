@@ -1,6 +1,8 @@
 # Experiment 2 : VirtualBox
 Aim: To Host a simple static website on a ubuntu server VM image with NAT networking
 
+**NOTE**: To perform this experiment you must have your own portfolio static website uploaded in github. The website must be `.html`, `.css` website.
+
 ## Steps to Perform Experiments
 1. Download and Install [VirtualBox](https://www.virtualbox.org/)
 2. Download VM Disk Image for Ubuntu Server from [OSBoxes.org](https://www.osboxes.org/ubuntu/)
@@ -15,7 +17,7 @@ Aim: To Host a simple static website on a ubuntu server VM image with NAT networ
 a. Host Port `2222` to Guest Port `22`
 b. Host Port `8080` to Guest Port `80`
 c. Any other port as required by your application
-11. Use `Putty` to connect to the Guest OS. Open the Putty app and put the IP of the Host OS / localhost and port as `2222`
+11. [Optional] Use `Putty` to connect to the Guest OS. Open the Putty app and put the IP of the Host OS / localhost and port as `2222`
 12. Click Open to connect to the VM and if there is a popup `Accept` it.
 13. Run the following commands to setup the server
 ```

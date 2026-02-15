@@ -2,13 +2,23 @@
 
 ***Software*** : AWS Academy Account
 
-***Objective*** : To deploy an ExpressJS app on an EC2 instance. 
+***Objective*** : To deploy static website on an EC2 instance. 
 
 ***Requirements*** : Each student must develop their own portfolio website with minimum two pages. Landing page must have the name of the student along with their photo and other details that will look good in a portfolio website. Another page must have a list of all the skills known to the student.
 
 ***Sample App*** : Sample app for reference DONOT use it every student must make their own portfolio website.
 
-[https://github.com/shiburaj/my-portfolio-express](https://github.com/shiburaj/my-portfolio-express)
+[https://github.com/shiburaj/my-portfolio-static](https://github.com/shiburaj/my-portfolio-static)
+
+## Steps to Start AWS Academy Lab
+1. Go to AWS Academy Website [Click Here](https://awsacademy.instructure.com/login/canvas)
+2. Login with your AWS Academy Credentials or use Forgot Password if you cant remember your password.
+3. Go to the Cloud Foundations Course
+4. Click Modules and scroll down to Sandbox
+5. After opening sandbox click the button to open sandbox in a new window.
+6. Click the `Start Lab` button to start the Lab.
+7. After sometime when the lab starts the timer of 3hrs will start.
+8. Click the `AWS` button to go to your AWS Dashboard.
 
 ## ***Steps to Deploy*** :
 1. Go to Services >> Compute >> EC2
@@ -72,25 +82,26 @@
 ![KeyPair](img/puty2.png)
 
 7. Setup the environment for your app on the machine
-  ```
-  sudo apt update
-  sudo apt install nodejs -y
-  git clone <your-github-repo-url>
-  cd <your-project-directory>
-  npm install
-  node app.js &
-  ```
+```
+sudo apt update
+sudo apt install nginx git -y
+sudo service nginx status
+cd /var/www/html
+sudo rm any-file.html
+sudo git clone https://github.com/your-github-portfolio-repo .
+```
    - Run apt update to update the package list
-   - Install the required platform. Eg: For nodejs app run the following command
-   - Clone the code from git repo to the current directory
-   - Run npm install to install the dependencies
-   - Run node app.js to start the server (Use & at the end to run the server in the background)
-8. Open the website in a new tab using the elastic ip and port address 
+   - Install the nginx server and git if required
+   - Check if nginx server is running
+   - Go to `/var/www/html` directory where we have to upload our website.
+   - Remove any file inside this folder as we have to start fresh
+   - Clone your portfolio website to this folder.
+8. Open the website in a new tab using the elastic ip
 ```
-http://<elastic-ip-address>:<port-number>
+http://<elastic-ip-address>
 ```
-
-9. (Optional) Shutdown All Services after using
+## After Taking Screenshots of EC2 Instance Dashboard and Your Website Stutdown Instance
+9. Shutdown All Services after using
    - Disassociate Elastic IP
    - Release Elastic IP
    - Terminate Instance
